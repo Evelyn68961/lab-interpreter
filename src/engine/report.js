@@ -2,6 +2,7 @@
 // Used by the "Copy report" button. Bilingual via i18n helpers.
 
 import { t, tt, UI } from '../i18n.js';
+import { verdictTier } from './interpret.js';
 
 export function buildReport({ panel, audience, lang, inputs, context, results, patterns }) {
   const lines = [];
@@ -46,6 +47,26 @@ export function buildReport({ panel, audience, lang, inputs, context, results, p
         value = '✓';
       }
       lines.push(`- **${t(o.label, lang)}**: ${value}`);
+    }
+    lines.push('');
+  }
+
+  // Dwarf's verdict — only if we have anything to verdict on
+  if (results && results.length > 0 && panel.dwarf?.verdicts) {
+    const tier = verdictTier(results, patterns || []);
+    const verdictText = panel.dwarf.verdicts[tier] ?? panel.dwarf.verdicts.normal;
+    const tierLabel = t(UI.verdictTier[tier] ?? UI.verdictTier.normal, lang);
+    lines.push(`### ${t(UI.results.verdictHeading, lang)} — ${tierLabel}`);
+    lines.push('');
+    lines.push(`> ${t(verdictText, lang)}`);
+    lines.push(`> — *${panel.dwarf.name}*`);
+
+    const quipsList = (patterns || []).filter((p) => p.dwarfQuip);
+    if (quipsList.length > 0) {
+      lines.push('');
+      for (const p of quipsList) {
+        lines.push(`> **${t(p.name, lang)}** — *${t(p.dwarfQuip, lang)}*`);
+      }
     }
     lines.push('');
   }

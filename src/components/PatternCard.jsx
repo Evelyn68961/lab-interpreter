@@ -1,9 +1,12 @@
 import { UI, t, tt } from '../i18n.js';
 import { References } from './References.jsx';
 
-export function PatternCard({ pattern, audience, lang }) {
+export function PatternCard({ pattern, audience, lang, index = 0 }) {
   return (
-    <article className={`pattern-card confidence-${pattern.confidence}`}>
+    <article
+      className={`pattern-card confidence-${pattern.confidence}`}
+      style={{ '--card-i': index }}
+    >
       <header className="pattern-card-head">
         <h4>{t(pattern.name, lang)}</h4>
         <span className="pattern-confidence">{t(UI.confidence[pattern.confidence], lang)}</span>

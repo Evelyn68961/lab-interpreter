@@ -4,6 +4,33 @@ export const renal = {
   id: 'renal',
   name: { en: 'Renal Function', zh: '腎功能檢驗' },
   shortName: { en: 'Renal', zh: '腎功能' },
+  dwarf: {
+    id: 'stoneward',
+    name: 'Stoneward Filterhand',
+    title: { en: 'Warden of the Twin Filters', zh: '雙腎守關人' },
+    greeting: {
+      en: 'The filters of the keep must run clean. I mark what is kept, what is sent away, and what slips through unbidden. Show me the readings, and I shall judge their flow.',
+      zh: '城堡的過濾器必須運作清澈。我會記下哪些留下、哪些被排出、哪些不該流失卻流失了。把你的數據交予我，我來評判其流動。',
+    },
+    verdicts: {
+      normal: {
+        en: 'The twin filters run clean. Waste is sent away as it should be, and the keep stays well-watered. All is in order.',
+        zh: '雙腎濾水清澈，廢物該排則排，城堡水脈飽滿——一切井然有序。',
+      },
+      borderline: {
+        en: 'A slight murk in the channel — perhaps the filter strains a little under its load. Watch and revisit.',
+        zh: '濾道略有混濁——或許負荷略重。請持續留意，過些時日再看。',
+      },
+      concerning: {
+        en: 'The filter labours. Either the flow has slowed, or what should be kept is slipping through. Heed this before the gates clog.',
+        zh: '過濾器吃力——或流量變慢，或該留住的東西流失了。請在門戶堵塞之前處理。',
+      },
+      critical: {
+        en: 'By the stone of the deep wells! The filter is failing. Urgent watch is needed — to the healer without delay.',
+        zh: '我以深井之石起誓——過濾器岌岌可危！請即刻就醫，不可拖延。',
+      },
+    },
+  },
   blurb: {
     en: {
       clinical:

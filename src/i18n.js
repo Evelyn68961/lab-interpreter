@@ -80,6 +80,13 @@ export const UI = {
     nextStep: { en: 'Next step:', zh: '建議：' },
     references: { en: 'References', zh: '參考資料' },
     panelReferences: { en: 'Guidelines & references', zh: '參考指引' },
+    verdictHeading: { en: 'The dwarf\'s verdict', zh: '矮人的判語' },
+  },
+  verdictTier: {
+    normal: { en: 'All is well', zh: '一切無恙' },
+    borderline: { en: 'A note of caution', zh: '略需注意' },
+    concerning: { en: 'Cause for concern', zh: '需要留意' },
+    critical: { en: 'Heed this warning', zh: '緊急警示' },
   },
   exports: {
     print: { en: 'Print / Save as PDF', zh: '列印 / 儲存為 PDF' },

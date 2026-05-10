@@ -5,6 +5,33 @@ export const cbc = {
   id: 'cbc',
   name: { en: 'Complete Blood Count', zh: '全血球計數（CBC）' },
   shortName: { en: 'CBC', zh: 'CBC' },
+  dwarf: {
+    id: 'ruby',
+    name: 'Ruby Hearthcounter',
+    title: { en: 'Keeper of the Three Bloodlines', zh: '三系血脈守護人' },
+    greeting: {
+      en: 'Three companies march in your veins — the red, the white, and the small ones. I count their numbers and weigh their stature. What have you brought for the count?',
+      zh: '你的血液中有三支隊伍——紅、白、與血小板。我會點清他們的人數，秤量他們的體格。把你的檢驗結果交給我吧。',
+    },
+    verdicts: {
+      normal: {
+        en: 'All three companies stand at full strength, in good order and proper stature. Well marched, traveler.',
+        zh: '三軍齊整，人數足、體格正——旅人，行軍有方。',
+      },
+      borderline: {
+        en: 'A column wavers slightly — perhaps a soldier or two short, perhaps grown a touch larger or smaller than is usual. Worth a second look.',
+        zh: '某一列略有動搖——或差一兩名兵卒，或體型稍顯偏大偏小。值得再點一次名。',
+      },
+      concerning: {
+        en: 'I cannot give a clean count. A regiment falls short, or swells beyond its natural number. The cause should be sought before it grows.',
+        zh: '此次點名不能算清楚。某支隊伍人數不足，或膨脹超過該有的數量。原因須在情況惡化前找出。',
+      },
+      critical: {
+        en: 'By the count of the deep halls! The lines are broken — too few standing, or wildly too many. To the healer, swift as you can.',
+        zh: '以深殿之名！軍列已亂——或殘兵潰散，或暴增失控。請盡速就醫。',
+      },
+    },
+  },
   blurb: {
     en: {
       clinical:

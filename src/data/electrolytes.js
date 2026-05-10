@@ -4,6 +4,33 @@ export const electrolytes = {
   id: 'electrolytes',
   name: { en: 'Basic Electrolytes', zh: '基本電解質' },
   shortName: { en: 'Lytes', zh: '電解質' },
+  dwarf: {
+    id: 'saltbeard',
+    name: 'Saltbeard Mineralmark',
+    title: { en: 'Smith of the Inner Salts', zh: '內鹽匠師' },
+    greeting: {
+      en: 'Salt and stone keep the heart\'s drum steady. Too much, too little — the drum falters. Tell me your numbers, and I shall name what is amiss.',
+      zh: '鹽與石頭穩住心臟的鼓聲。多了、少了，鼓聲都會走調。把數值告訴我，我來指出哪裡失衡。',
+    },
+    verdicts: {
+      normal: {
+        en: 'The salts sit in their proper measure. The heart\'s drum beats true and steady. Well-balanced, traveler.',
+        zh: '鹽量恰如其分，心鼓穩穩擊響——旅人，平衡得宜。',
+      },
+      borderline: {
+        en: 'A grain or two off the mark — not yet trouble, but worth marking on the ledger.',
+        zh: '一兩粒鹽偏離了應有的位置——尚未成大患，但值得記在帳冊上。',
+      },
+      concerning: {
+        en: 'A salt has wandered from its station. The drum may skip — set the matter right before the rhythm breaks.',
+        zh: '某種鹽離開了它的崗位。心鼓恐將跳拍——請在節奏紊亂前處理。',
+      },
+      critical: {
+        en: 'By the salt of the deep mines! The balance breaks, and the heart\'s drum is in peril. To the healer with all haste.',
+        zh: '我以深礦之鹽起誓——平衡已破，心鼓危殆！請火速就醫。',
+      },
+    },
+  },
   blurb: {
     en: {
       clinical:

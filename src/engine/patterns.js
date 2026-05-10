@@ -38,6 +38,10 @@ export const patterns = [
         patient: '此型態需要緊急臨床評估，請勿自行處理。',
       },
     },
+    dwarfQuip: {
+      en: 'DIC! The forge devours itself — clotting and bleeding at once. To the healer with all haste.',
+      zh: 'DIC！這是爐火吞噬自身的徵兆——一邊凝結、一邊崩漏。請火速就醫。',
+    },
     references: [
       {
         label: 'ISTH: Practice Guidelines & DIC Scoring System',
@@ -99,6 +103,10 @@ export const patterns = [
           '若您服用 warfarin，請將此結果告知醫師，可能需調整劑量。',
       },
     },
+    dwarfQuip: {
+      en: 'The mark of warfarin is upon the forge — the slow-clot tonic at work. If this is by the healer\'s design, all is well.',
+      zh: '這是 warfarin 在爐中發揮作用的痕跡——若是醫者所授的劑量，便無大礙。',
+    },
     references: [
       {
         label: 'ACCP/CHEST: Antithrombotic Therapy Guidelines',
@@ -149,6 +157,10 @@ export const patterns = [
         patient: '若您正在接受 heparin 治療，此結果應由醫療團隊判讀。',
       },
     },
+    dwarfQuip: {
+      en: 'The second river runs slow — the touch of heparin. Confirm with your healer that this is the intended song.',
+      zh: '第二條血脈被刻意放慢——這是 heparin 的觸動。請與醫者確認此為預期的節奏。',
+    },
     match(v, ctx) {
       if (!has(v, 'pt', 'aptt')) return { matched: false };
       const ptNormal = v.pt >= 11 && v.pt <= 13.5;
@@ -188,6 +200,10 @@ export const patterns = [
           '結合肝功能、白蛋白與血小板判讀。PT/INR 是 MELD 分數的一部分；可透過 D-二聚體與臨床狀況與 DIC 鑑別。',
         patient: '請與醫師討論肝臟狀況，可能需要進一步檢查。',
       },
+    },
+    dwarfQuip: {
+      en: 'The liver\'s bellows wheeze. Without their breath the forge has no fuel — both channels falter together.',
+      zh: '肝之風箱已弱，火源無力——兩條血脈一同遲滯。',
     },
     match(v, ctx) {
       if (!has(v, 'pt', 'aptt')) return { matched: false };
@@ -229,6 +245,10 @@ export const patterns = [
           '建議檢查 ferritin、鐵相關指標與網狀紅血球。若鐵相關檢查正常，可考慮血紅素電泳。',
         patient: '醫師可能會安排與鐵相關的血液檢查作為下一步。',
       },
+    },
+    dwarfQuip: {
+      en: 'The red company is small in stature. Most likely they hunger for iron.',
+      zh: '紅軍身形矮小——多半是鐵的給養不足。',
     },
     references: [
       {
@@ -272,6 +292,10 @@ export const patterns = [
           '檢查維生素 B12、葉酸、TSH、網狀紅血球；必要時透過抹片觀察巨母紅血球性特徵。',
         patient: '通常下一步會檢查維生素與甲狀腺。',
       },
+    },
+    dwarfQuip: {
+      en: 'The red company is large but few. Vitamin or rest is what they want.',
+      zh: '紅軍體型雖巨，人數卻少——他們所缺的是維生素或喘息之機。',
     },
     references: [
       {
@@ -317,6 +341,10 @@ export const patterns = [
         patient: '需配合身體感受與是否發燒等狀況，由醫師綜合判讀。',
       },
     },
+    dwarfQuip: {
+      en: 'The white legions march in force — they answer some unseen call. Bacteria likely stalk the keep.',
+      zh: '白甲軍團大舉出動——他們在回應某個看不見的敵手，多半是細菌已入侵城堡。',
+    },
     match(v) {
       if (!has(v, 'wbc')) return { matched: false };
       const wbcHi = v.wbc > 11;
@@ -352,6 +380,10 @@ export const patterns = [
           '建議週邊血液抹片、網狀紅血球計數、B12/葉酸檢查與血液腫瘤科會診，必要時做骨髓切片。',
         patient: '此型態需要儘速由醫師追蹤。',
       },
+    },
+    dwarfQuip: {
+      en: 'All three companies are thinned. The marrow\'s foundry runs cold.',
+      zh: '三軍俱削減——骨髓的兵工廠已冷卻。',
     },
     match(v, ctx) {
       if (!has(v, 'hgb', 'wbc', 'platelets')) return { matched: false };
@@ -397,6 +429,10 @@ export const patterns = [
           '評估容積狀態、尿鈉 / FENa、必要時補液試驗；檢視可能的腎毒性藥物。',
         patient: '通常下一步會評估水分狀態並檢視用藥。',
       },
+    },
+    dwarfQuip: {
+      en: 'The filter starves for flow. Bring water to the keep before the stones go dry.',
+      zh: '過濾器缺乏流量——請及時為城堡引水，免得石材乾裂。',
     },
     references: [
       {
@@ -444,6 +480,10 @@ export const patterns = [
         patient: '通常下一步會做尿液檢查以釐清原因。',
       },
     },
+    dwarfQuip: {
+      en: 'The filter itself is wounded. Tend to the stone, not just the river that feeds it.',
+      zh: '過濾器本體已受傷——須照料石材，而非僅僅供水。',
+    },
     match(v) {
       if (!has(v, 'bun', 'creatinine')) return { matched: false };
       const ratio = v.bun / v.creatinine;
@@ -484,6 +524,10 @@ export const patterns = [
           '檢查乳酸、酮體、血糖；若懷疑 salicylate 中毒可加驗其濃度；若懷疑毒性醇類，計算 osmolar gap。',
         patient: '需要儘速臨床評估，請勿自行處理。',
       },
+    },
+    dwarfQuip: {
+      en: 'An unmeasured acid stalks the salts. Hunt it down — lactate, ketone, or worse.',
+      zh: '有一種未被計算的酸潛伏於鹽中——追緝它，可能是乳酸、酮體，或更糟的東西。',
     },
     references: [
       {
@@ -527,6 +571,10 @@ export const patterns = [
         patient: '請立即就醫，不要拖延。',
       },
     },
+    dwarfQuip: {
+      en: 'The potassium drum thunders. The heart cannot keep time — to the healer at once.',
+      zh: '鉀的鼓聲如雷鳴——心臟難以合拍，請立即就醫。',
+    },
     references: [
       {
         label: 'UpToDate: Treatment and prevention of hyperkalemia',
@@ -554,6 +602,7 @@ export function runPatterns(panelId, values, context) {
         notes: r.notes,
         explanation: p.explanation,
         nextSteps: p.nextSteps,
+        dwarfQuip: p.dwarfQuip,
         references: p.references,
       };
     })

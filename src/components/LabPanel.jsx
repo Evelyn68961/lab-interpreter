@@ -4,7 +4,9 @@ import { ResultCard } from './ResultCard.jsx';
 import { PatternCard } from './PatternCard.jsx';
 import { ContextPanel } from './ContextPanel.jsx';
 import { References } from './References.jsx';
-import { interpretAnalyte, collectValues } from '../engine/interpret.js';
+import { DwarfGreeting } from './DwarfGreeting.jsx';
+import { DwarfVerdict } from './DwarfVerdict.jsx';
+import { interpretAnalyte, collectValues, verdictTier } from '../engine/interpret.js';
 import { runPatterns } from '../engine/patterns.js';
 import { buildReport } from '../engine/report.js';
 import { usePersistedState } from '../hooks/usePersistedState.js';
@@ -36,6 +38,11 @@ export function LabPanel({ panel, audience, lang }) {
     if (!submitted) return [];
     return runPatterns(panel.id, collectValues(panel, inputs), context);
   }, [panel, inputs, context, submitted]);
+
+  const verdictLevel = useMemo(
+    () => (submitted ? verdictTier(results, matchedPatterns) : 'normal'),
+    [submitted, results, matchedPatterns]
+  );
 
   const filledCount = panel.analytes.filter(
     (a) => inputs[a.id] !== undefined && inputs[a.id] !== ''
@@ -74,7 +81,7 @@ export function LabPanel({ panel, audience, lang }) {
 
   return (
     <section className="lab-panel">
-      <p className="panel-blurb">{tt(panel.blurb, lang, audience)}</p>
+      <DwarfGreeting dwarf={panel.dwarf} panel={panel} audience={audience} lang={lang} />
 
       <div className="no-print">
         <ContextPanel
@@ -126,11 +133,26 @@ export function LabPanel({ panel, audience, lang }) {
         <div className="results">
           <PrintHeader panel={panel} lang={lang} audience={audience} inputs={inputs} context={context} />
 
+          {results.length > 0 && (
+            <DwarfVerdict
+              dwarf={panel.dwarf}
+              tier={verdictLevel}
+              lang={lang}
+              patterns={matchedPatterns}
+            />
+          )}
+
           {matchedPatterns.length > 0 && (
             <div className="pattern-section">
               <h3>{t(UI.results.patterns, lang)}</h3>
-              {matchedPatterns.map((p) => (
-                <PatternCard key={p.id} pattern={p} audience={audience} lang={lang} />
+              {matchedPatterns.map((p, i) => (
+                <PatternCard
+                  key={p.id}
+                  pattern={p}
+                  audience={audience}
+                  lang={lang}
+                  index={i}
+                />
               ))}
             </div>
           )}
@@ -139,13 +161,14 @@ export function LabPanel({ panel, audience, lang }) {
             <h3>{t(UI.results.perTest, lang)}</h3>
             {results.length === 0 && <p className="muted">{t(UI.results.enterAtLeast, lang)}</p>}
             <div className="result-grid">
-              {results.map(({ analyte, result }) => (
+              {results.map(({ analyte, result }, i) => (
                 <ResultCard
                   key={analyte.id}
                   analyte={analyte}
                   result={result}
                   audience={audience}
                   lang={lang}
+                  index={i}
                 />
               ))}
             </div>

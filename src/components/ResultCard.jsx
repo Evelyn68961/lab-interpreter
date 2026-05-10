@@ -10,12 +10,16 @@ const LEVEL_ICONS = {
   invalid: '?',
 };
 
-export function ResultCard({ analyte, result, audience, lang }) {
+export function ResultCard({ analyte, result, audience, lang, index = 0 }) {
   if (!result) return null;
   const level = result.level;
   const levelLabel = t(UI.levels[level] ?? UI.levels.invalid, lang);
   return (
-    <article className={`result-card level-${level}`} aria-label={`${t(analyte.name, lang)} result`}>
+    <article
+      className={`result-card level-${level}`}
+      aria-label={`${t(analyte.name, lang)} result`}
+      style={{ '--card-i': index }}
+    >
       <header className="result-card-head">
         <span className="result-icon" aria-hidden="true">
           {LEVEL_ICONS[level]}

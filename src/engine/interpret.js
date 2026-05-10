@@ -41,6 +41,27 @@ export function interpretAnalyte(analyte, rawValue, context) {
   return null;
 }
 
+// Choose the dwarf's verdict tier based on per-test results + matched patterns.
+// 4 tiers: 'normal' | 'borderline' | 'concerning' | 'critical'.
+//   - any high-confidence pattern        → 'critical'
+//   - any critical level                 → 'critical'
+//   - any high or low                    → 'concerning'
+//   - moderate-confidence pattern        → bumps 'borderline' up to 'concerning'
+//   - any borderline                     → 'borderline'
+//   - everything normal/therapeutic      → 'normal'
+export function verdictTier(results, patterns) {
+  const levels = results.map((r) => r.result?.level).filter(Boolean);
+  const hasHighConf = patterns?.some((p) => p.confidence === 'high');
+  const hasModConf = patterns?.some((p) => p.confidence === 'moderate');
+
+  if (hasHighConf) return 'critical';
+  if (levels.includes('critical')) return 'critical';
+  if (levels.includes('high') || levels.includes('low')) return 'concerning';
+  if (hasModConf) return 'concerning';
+  if (levels.includes('borderline')) return 'borderline';
+  return 'normal';
+}
+
 // Helper to read parsed numeric values across a panel (used by patterns.js).
 export function collectValues(panel, inputs) {
   const out = {};

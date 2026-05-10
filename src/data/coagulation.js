@@ -6,6 +6,33 @@ export const coagulation = {
   id: 'coagulation',
   name: { en: 'Coagulation Profile', zh: '凝血功能檢驗' },
   shortName: { en: 'Coag', zh: '凝血' },
+  dwarf: {
+    id: 'ferrum',
+    name: 'Ferrum Stoutbeard',
+    title: { en: 'Master of the Forge of Lifeblood', zh: '生命之血爐主' },
+    greeting: {
+      en: 'Greetings, traveler. I tend the great forge where blood is bidden to flow or stilled. Show me your readings, and I shall tell whether the channels run true.',
+      zh: '旅人，歡迎來到我的鐵爐——這裡掌管著血液流動與凝結的奧秘。將你的數據交予我，由我來判斷流動是否合度。',
+    },
+    verdicts: {
+      normal: {
+        en: 'The forge runs true. The channels of blood are neither too quick to clot nor too slow to mend. Carry on, traveler.',
+        zh: '爐火正旺，血脈通暢——既不貪快凝結，也不怠慢修補。旅人，繼續前行吧。',
+      },
+      borderline: {
+        en: 'A faint hiss from the forge — the flow is mostly true, but one channel rings off-key. Mark it and watch.',
+        zh: '爐火傳來一絲嘶聲——血脈大致通順，唯有一條微微走音。記下，留心觀察便是。',
+      },
+      concerning: {
+        en: 'The forge complains. Either the iron flows too freely, or it sets too eagerly. This is not the song of a healthy keep — speak with your healer.',
+        zh: '爐火傳來低吼。鐵汁或流得太奔放，或凝得太急切——這不是健康城堡該有的節奏。請與你的醫者商議。',
+      },
+      critical: {
+        en: 'By my hammer! The forge thunders out of true. Tarry not — seek the healer at once, lest the keep bleed or be sealed shut.',
+        zh: '我以這把鐵錘起誓——爐火已亂！別再耽擱，立刻去找醫者，免得城堡或大出血、或徹底凝閉。',
+      },
+    },
+  },
   blurb: {
     en: {
       clinical:
