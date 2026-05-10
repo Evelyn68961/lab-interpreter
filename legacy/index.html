@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" inputmode="decimal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coagulation Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">
+      <span class="title-text">Lab Data Interpreter</span>
+    </h1>  
+    <h2 class="subtitle">
+      <span class="subtitle-text">Coagulation Profile</span>
+    </h2>
+    <div class="form" autocomplete="off">
+        <div>
+            <label for="pt">PT:</label>
+            <input type="number" id="pt" step="any" inputmode="decimal">
+        </div>
+        <div>
+            <label for="inr">INR:</label>
+            <input type="number" id="inr" step="any" inputmode="decimal">
+        </div>    
+        <div>
+            <label for="aptt">aPTT:</label>
+            <input type="number" id="aptt" step="any" inputmode="decimal">
+        </div>
+        <div>
+            <label for="ddimer">D-dimer:</label>
+            <input type="number" id="ddimer" step="any" inputmode="decimal">
+        </div>
+        <div>
+            <label for="fibrinogen">Fibrinogen:</label>
+            <input type="number" id="fibrinogen" step="any" inputmode="decimal">
+        </div>
+        <div><button onclick="analyze()">Click to Analyze</button></div>
+    </div>
+    <div id="result">
+        <strong>Interpretation</strong><br>
+        <span id="output"></span>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
